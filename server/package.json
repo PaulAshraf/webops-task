@@ -1,0 +1,25 @@
+{
+  "name": "webops-task",
+  "version": "1.0.0",
+  "description": "The first task assigned at webops",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulAshraf/webops-task.git"
+  },
+  "author": "Paul Ashraf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulAshraf/webops-task/issues"
+  },
+  "homepage": "https://github.com/PaulAshraf/webops-task#readme"
+}
