@@ -10,7 +10,7 @@ const Item = styled.div`
 const ItemContainer = styled.div`
     display: flex;
     flex-wrap: nowrap;
-    align-items: stretch;
+    align-items: center;
     height: auto;
 `;
 
@@ -21,7 +21,7 @@ const TextContainer = styled.div`
     padding: 0.5em;
 `;
 
-const ItemTitle = styled.p`
+const ItemTitle = styled.span`
     text-align: left;
     font-size: 0.8em;
     font-family: "Arial Black", sans-serif;

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import FooterCard from './FooterCard'
+import FooterBar from './FooterBar';
 
 const Title = styled.h1`
     font-size: 1.5em;
@@ -73,6 +74,9 @@ function Footer() {
                     linkText = 'Create your dream list.' />
 
             </Container>
+
+            <FooterBar />
+
         </div>
     )
 }
