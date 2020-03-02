@@ -1,10 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import media from 'styled-media-query'
+import '../App.css'
 
 const Item = styled.div`
-    flex-basis: 30%;
-    flex-shrink: 2;
     padding: 0.5em;
+
+    ${media.greaterThan('750px')`
+        flex-basis: 49%;
+    `}
+
+    ${media.greaterThan('1000px')`
+        flex-basis: 32%;
+    `}
 `;
 
 const ItemContainer = styled.div`
@@ -35,7 +43,7 @@ const ItemText = styled.p`
 
 function FooterCard(props) {
     return (
-            <Item><ItemContainer>
+            <Item><ItemContainer className="t" >
                     <img src={props.icon} alt={props.title}></img>
                     <TextContainer>
                         <ItemTitle>{props.title}</ItemTitle>

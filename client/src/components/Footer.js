@@ -3,14 +3,22 @@ import styled from 'styled-components'
 import FooterCard from './FooterCard'
 import FooterBar from './FooterBar';
 
-const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    font-family: "Arial Black", Gadget, sans-serif;
+const FooterContainer = styled.div`
+    padding: 0;
+    margin-top: 100px;
+    max-width: 1100px;
+    position: relative;
 `;
 
-const TitleWrapper = styled.div`
-  padding: 2em;
+const Title = styled.h3`
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.25;
+    text-align: center;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: 900;
 `;
 
 const Container = styled.div`
@@ -24,10 +32,8 @@ const Container = styled.div`
 
 function Footer() {
     return (
-        <div>
-            <TitleWrapper>
-                <Title>WEDDING PLANNING IS A PIECE OF CAKE WITH WEDS360. WE KNOW WHAT MATTERS MOST AND YOU CAN COUNT ON US EVERY STEP OF THE WAY.</Title>
-            </TitleWrapper>
+        <FooterContainer>
+            <Title>WEDDING PLANNING IS A PIECE OF CAKE WITH WEDS360. WE KNOW WHAT MATTERS MOST AND YOU CAN COUNT ON US EVERY STEP OF THE WAY.</Title>
 
             <Container>
 
@@ -77,7 +83,7 @@ function Footer() {
 
             <FooterBar />
 
-        </div>
+        </FooterContainer>
     )
 }
 
