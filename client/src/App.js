@@ -11,7 +11,7 @@ function App() {
     <div style={{display: 'block',boxSizing: 'border-box'}}>
       <Header />
       <br /><br /><br /><br />
-      <PhotoPage />
+      <PhotoPage id={0} />
       <Footer />
       <FooterBar />
     </div>

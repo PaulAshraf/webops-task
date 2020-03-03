@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
@@ -131,13 +131,21 @@ const RelatedSubTitle = styled.h3`
     -webkit-box-orient: vertical;
 `;
 
+function getRelatedPhotos(id) {
+    return [1,2,3,4,5,6,7,8];
+}
 
-function PhotoPage() {
+
+function PhotoPage(props) {
+
+    const [photoData,setPhotoData] = useState({})
 
     useEffect(() => {
-        fetch("http://localhost:8080/0.json")
+        fetch(`http://localhost:8080/${props.id}.json`)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => setPhotoData(data))
+
+        document.title = `Weds360 | ${photoData.name}`
       });
 
 
@@ -145,43 +153,31 @@ function PhotoPage() {
         <div>
         <PhotoAreaWrapper>
             <PhotoWrapper>
-                <Photo src="http://localhost:8080/0.jpeg" alt="dwq"></Photo>
+                <Photo src={`http://localhost:8080/${props.id}.jpeg`} alt={photoData.name}></Photo>
             </PhotoWrapper>
             <PhotoDiscription>
-                <Title>Test</Title>
-                <SubTitle>oq'oidqdwih'qidw</SubTitle>
+                <Title>{photoData.name}</Title>
+                <SubTitle>{photoData.desc}</SubTitle>
                 <Link></Link>
             </PhotoDiscription>
         </PhotoAreaWrapper>
         <RelatedWrapper>
             <RelatedTitle>Related Photos</RelatedTitle>
             <RelatedPhotoSectionContainer>
-                <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
-                    <RealtedPhoto src="http://localhost:8080/0.jpeg" alt="vs"></RealtedPhoto>
-                    <RelatedSubTitle>This is a test</RelatedSubTitle>
-                </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
+                {getRelatedPhotos(photoData.id).map(photoId => {
 
-                <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
-                    <RealtedPhoto src="http://localhost:8080/0.jpeg" alt="vs"></RealtedPhoto>
-                    <RelatedSubTitle>This is a test</RelatedSubTitle>
-                </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
-
-                <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
-                    <RealtedPhoto src="http://localhost:8080/0.jpeg" alt="vs"></RealtedPhoto>
-                    <RelatedSubTitle>This is a test</RelatedSubTitle>
-                </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
-
-                <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
-                    <RealtedPhoto src="http://localhost:8080/0.jpeg" alt="vs"></RealtedPhoto>
-                    <RelatedSubTitle>This is a test</RelatedSubTitle>
-                </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
-
-                <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
-                    <RealtedPhoto src="http://localhost:8080/0.jpeg" alt="vs"></RealtedPhoto>
-                    <RelatedSubTitle>This is a test</RelatedSubTitle>
-                </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
-
+                let photo = {}
                 
+                fetch(`http://localhost:8080/${photoId}.json`)
+                    .then(response => response.json())
+                    .then(data => {photo = data; console.log(data)})
+                
+                return(
+                    <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
+                        <RealtedPhoto src={`http://localhost:8080/${photoId}.jpeg`} alt={photo.name}></RealtedPhoto>
+                        <RelatedSubTitle>{photo.name}</RelatedSubTitle>
+                    </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
+                )})} 
             </RelatedPhotoSectionContainer>
         </RelatedWrapper>
         </div>

@@ -8,9 +8,6 @@ const HeaderWrapper = styled.div`
     z-index: 9998;
 `;
 
-
-
-
 const Container = styled.div`
 
     transition: all cubic-bezier(0.56, -0.22, 0.25, 1) 0.1s;
