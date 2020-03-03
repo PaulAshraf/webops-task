@@ -11,6 +11,10 @@ const Container = styled.div`
     width: 100%;
     height: 200%;
     background-color: black;
+
+    background-color: #000000;
+    width: 100%;
+    direction: ltr !important;
 `;
 
 const Item = styled.div`

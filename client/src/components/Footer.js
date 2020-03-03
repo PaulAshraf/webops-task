@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import FooterCard from './FooterCard'
-import FooterBar from './FooterBar';
 
 const FooterContainer = styled.div`
     padding: 0;
     margin-top: 100px;
     max-width: 1100px;
     position: relative;
+
+    margin-right: auto;
+    margin-left: auto;
+    
 `;
 
 const Title = styled.h3`
@@ -80,8 +83,6 @@ function Footer() {
                     linkText = 'Create your dream list.' />
 
             </Container>
-
-            <FooterBar />
 
         </FooterContainer>
     )

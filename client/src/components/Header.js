@@ -2,10 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-const Container = styled.div`
+const HeaderWrapper = styled.div`
     width: 100%;
     padding-top: 40px;
     z-index: 9998;
+`;
+
+
+
+
+const Container = styled.div`
 
     transition: all cubic-bezier(0.56, -0.22, 0.25, 1) 0.1s;
     margin: auto;
@@ -60,6 +66,8 @@ const DropdownItem = styled.a`
     color: #000;
     border-top: solid 1px #000;
 
+    text-decoration: none;
+
     ${media.lessThan('1200px')`
         font-size: 10px;
     `}
@@ -107,7 +115,7 @@ const Logo = styled.img`
 
 function Header() {
     return (
-        <Container>
+        <HeaderWrapper><Container>
             <SubContainer>
                 <Item>360 Planner 
                     <Dropdown>
@@ -128,7 +136,7 @@ function Header() {
                 <Item>Gallery</Item>
                 <Item>Ideas & More</Item>
             </SubContainer>
-        </Container>
+        </Container></HeaderWrapper>
     )
 }
 

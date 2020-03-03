@@ -6,7 +6,7 @@ import '../App.css'
 const Item = styled.div`
     padding: 0.5em;
 
-    ${media.greaterThan('750px')`
+    ${media.between('750px','1000px')`
         flex-basis: 49%;
     `}
 
