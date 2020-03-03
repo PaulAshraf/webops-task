@@ -1,0 +1,59 @@
+{"data":
+	[
+		{
+		   "id":0,
+		   "name":"The Lighthouse",
+		   "desc":"Two lighthouse keepers try to maintain their sanity while living on a remote and mysterious New England island in the 1890s.",
+		   "category":"Horror"
+		},
+		{
+			"id":1,
+			"name":"Parasite",
+			"desc":"Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+			"category":"Drama"
+		},
+		{
+			"id":2,
+			"name":"Jojo Rabbit",
+			"desc":"Jojo is a lonely German boy who discovers that his single mother is hiding a Jewish girl in their attic. Aided only by his imaginary friend -- Adolf Hitler -- Jojo must confront his blind nationalism as World War II continues to rage on.",
+			"category":"Comedy"
+		},
+		{
+			"id":3,
+			"name":"Once Upon a Time in Hollywood",
+			"desc":"Rick, a washed-out actor, and Cliff, his stunt double, struggle to recapture fame and success in 1960s Los Angeles. Meanwhile, living next door to Rick is Sharon Tate and her husband Roman Polanski.",
+			"category":"Drama"
+		},
+		{
+			"id":4,
+			"name":"Ford v Ferrari",
+			"desc":"American automotive designer Carroll Shelby and fearless British race car driver Ken Miles battle corporate interference, the laws of physics and their own personal demons to build a revolutionary vehicle for the Ford Motor Co. Together, they plan to compete against the race cars of Enzo Ferrari at the 24 Hours of Le Mans in France in 1966.",
+			"category":"Sport"
+		},
+		{
+			"id":5,
+			"name":"Little Women",
+			"desc":"In the years after the Civil War, Jo March lives in New York and makes her living as a writer, while her sister Amy studies painting in Paris. Amy has a chance encounter with Theodore, a childhood crush who proposed to Jo but was ultimately rejected. Their oldest sibling, Meg, is married to a schoolteacher, while shy sister Beth develops a devastating illness that brings the family back together.",
+			"category":"Drama"
+		},
+		{
+			"id":6,
+			"name":"Joker",
+			"desc":"Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker.",
+			"category":"Thriller"
+		},
+		{
+			"id":7,
+			"name":"The Irishman",
+			"desc":"In the 1950s, truck driver Frank Sheeran gets involved with Russell Bufalino and his Pennsylvania crime family. As Sheeran climbs the ranks to become a top hit man, he also goes to work for Jimmy Hoffa -- a powerful Teamster tied to organized crime.",
+			"category":"Crime"
+		},
+		{
+			"id":8,
+			"name":"1917",
+			"desc":"During World War I, two British soldiers -- Lance Cpl. Schofield and Lance Cpl. Blake -- receive seemingly impossible orders. In a race against time, they must cross over into enemy territory to deliver a message that could potentially save 1,600 of their fellow comrades -- including Blake's own brother.",
+			"category":"War"
+		}
+		
+	]
+}

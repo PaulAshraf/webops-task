@@ -81,7 +81,7 @@ const RelatedPhotoSectionContainer = styled.div`
 `;
 
 const RelatedPhotoContainer = styled.div`
-    padding: 0 5px;
+    padding: 0 10px;
     flex-basis: 49%
     position: relative;
     min-height: 1px;
@@ -103,12 +103,14 @@ const RealtedPhotoLink = styled.a`
 
 const RelatedPhotoInnerContainer = styled.div`
     height: 100%;
+    width: 300px;
     margin: 0 auto;
     position: relative;
 `;
 
 const RealtedPhoto = styled.img`
     height: 230px;
+    width: 300px;
     object-fit: contain;
     background-size: cover !important;
     background-position: center !important;
@@ -131,53 +133,49 @@ const RelatedSubTitle = styled.h3`
     -webkit-box-orient: vertical;
 `;
 
-function getRelatedPhotos(id) {
+function getRelatedPhotosIds(id) {
     return [1,2,3,4,5,6,7,8];
 }
 
 
 function PhotoPage(props) {
 
-    const [photoData,setPhotoData] = useState({})
+    const [photoData,setPhotoData] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:8080/${props.id}.json`)
+        fetch(`http://localhost:8080/data.json`)
             .then(response => response.json())
-            .then(data => setPhotoData(data))
+            .then(data => setPhotoData(data.data))
 
-        document.title = `Weds360 | ${photoData.name}`
-      });
+            
+        if(photoData.length !== 0)
+            document.title = `Weds360 | ${photoData[props.match.params.id].name}`
+
+      },[]);
 
 
     return (
         <div>
         <PhotoAreaWrapper>
             <PhotoWrapper>
-                <Photo src={`http://localhost:8080/${props.id}.jpeg`} alt={photoData.name}></Photo>
+                {photoData.length === 0?<div />: <Photo src={`http://localhost:8080/${props.match.params.id}.jpeg`} alt={photoData[props.match.params.id].name}></Photo>}
             </PhotoWrapper>
             <PhotoDiscription>
-                <Title>{photoData.name}</Title>
-                <SubTitle>{photoData.desc}</SubTitle>
+                <Title>{photoData.length === 0?'': photoData[props.match.params.id].name}</Title>
+                <SubTitle>{photoData.length === 0?'': photoData[props.match.params.id].desc}</SubTitle>
                 <Link></Link>
             </PhotoDiscription>
         </PhotoAreaWrapper>
         <RelatedWrapper>
             <RelatedTitle>Related Photos</RelatedTitle>
             <RelatedPhotoSectionContainer>
-                {getRelatedPhotos(photoData.id).map(photoId => {
-
-                let photo = {}
-                
-                fetch(`http://localhost:8080/${photoId}.json`)
-                    .then(response => response.json())
-                    .then(data => {photo = data; console.log(data)})
-                
+                {getRelatedPhotosIds(props.match.params.id).map((id) => {
                 return(
-                    <RelatedPhotoContainer><RealtedPhotoLink><RelatedPhotoInnerContainer>
-                        <RealtedPhoto src={`http://localhost:8080/${photoId}.jpeg`} alt={photo.name}></RealtedPhoto>
-                        <RelatedSubTitle>{photo.name}</RelatedSubTitle>
+                    <RelatedPhotoContainer key={id}><RealtedPhotoLink href={`/photos/${id}`}><RelatedPhotoInnerContainer>
+                        {photoData.length === 0?<div />:<RealtedPhoto src={`http://localhost:8080/${id}.jpeg`} alt={photoData[id].name}></RealtedPhoto>}
+                        <RelatedSubTitle>{photoData.length === 0?'': photoData[id].name}</RelatedSubTitle>
                     </RelatedPhotoInnerContainer></RealtedPhotoLink></RelatedPhotoContainer>
-                )})} 
+                );})} 
             </RelatedPhotoSectionContainer>
         </RelatedWrapper>
         </div>
