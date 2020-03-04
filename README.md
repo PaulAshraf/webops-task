@@ -12,4 +12,4 @@ This will be updated with every commit.
 | Home Page | :ballot_box_with_check: |
 | Categories | :x: |
 | Search Bar | :ballot_box_with_check: |
-| Pagation with Redux | :soon: |
+| Pagation with Redux | :ballot_box_with_check: |

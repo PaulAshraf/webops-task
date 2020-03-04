@@ -8,9 +8,9 @@ import Footer from './components/Footer'
 import Header from './components/Header';
 import FooterBar from './components/FooterBar';
 import PhotoPage from './pages/PhotoPage'
+import HomePage from './pages/HomePage';
 import styled from 'styled-components'
 import './App.css';
-import HomePage from './pages/HomePage';
 
 const AppWrapper = styled.div`
   display: block';

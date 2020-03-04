@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
-import {next, prev} from '../reducers/pageSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import PageSelect from '../components/PageSelect';
+
+
+
 
 const Wrapper = styled.div`
     width: 90%;
@@ -153,7 +156,7 @@ function getIds(page,photoData){
 }
 
 function isSearch(query){
-    if(query === null)
+    if(query === '')
         return false
     else
         return true
@@ -174,12 +177,11 @@ function renderSearch(query,photoData){
 
 function HomePage(props) {
 
-    const dispatch = useDispatch()
     const page = useSelector(state => state.page)
 
     const [photoData,setPhotoData] = useState([])
 
-    useEffect(() => { console.log(props.location.search)
+    useEffect(() => { 
         fetch(`http://localhost:8080/data.json`)
             .then(response => response.json())
             .then(data => setPhotoData(data.data))
@@ -187,11 +189,12 @@ function HomePage(props) {
       },[]);
 
     return (
+        <div>
         <Wrapper>
             <SearchWrapper>
                 <Form action='/photos'>
                     <Buttons>
-                        <ClearButton>Clear</ClearButton>
+                        <ClearButton href='/'>Clear</ClearButton>
                         <ApplyButton>Apply</ApplyButton>
                     </Buttons>
                     <SearchBarWrapper>
@@ -220,6 +223,8 @@ function HomePage(props) {
                 )})}
             </PhotosContainer>
         </Wrapper>
+        <PageSelect />
+        </div>
     
     )
 }

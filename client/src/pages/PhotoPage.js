@@ -10,10 +10,20 @@ const PhotoAreaWrapper = styled.div`
     margin: 15px auto 50px;
 
     font-family: "Lato", sans-serif;
+
+    ${media.lessThan('768px')`
+        flex-direction: column;
+        margin-top: 10px;
+    `}
 `;
 
 const PhotoWrapper = styled.div`
     width: 63%;
+
+    ${media.lessThan('768px')`
+        padding: 0 10px;
+        width: 100%;
+    `}
 `;
 
 const Photo = styled.img`
@@ -25,6 +35,12 @@ const Photo = styled.img`
 const PhotoDiscription = styled.div`
     width: 37%;
     padding: 15px 20px;
+
+    ${media.lessThan('768px')`
+        padding-right: 10px;
+        padding-left: 10px;
+        width: 100%;
+    `}
 `;
 
 const Title = styled.h2`

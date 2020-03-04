@@ -10,10 +10,12 @@ const pageSlice = createSlice({
             return( state - 1)
         else
             return( state )
+    },
+    goto: (state,action) => action.payload
     }
   }
-})
+)
 
-export const { next, prev } = pageSlice.actions
+export const { next, prev, goto } = pageSlice.actions
 
 export default pageSlice.reducer
