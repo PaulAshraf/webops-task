@@ -149,6 +149,7 @@ const RelatedSubTitle = styled.h3`
     -webkit-box-orient: vertical;
 `;
 
+
 function getRelatedPhotosIds(id) {
     return [1,2,3,4,5,6,7,8];
 }
@@ -167,7 +168,7 @@ function PhotoPage(props) {
         if(photoData.length !== 0)
             document.title = `Weds360 | ${photoData[props.match.params.id].name}`
 
-      },[]);
+      },[photoData, props.match.params.id]);
 
 
     return (

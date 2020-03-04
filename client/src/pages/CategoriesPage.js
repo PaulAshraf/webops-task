@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
-import { useSelector } from 'react-redux'
-import PageSelect from '../components/PageSelect';
-
-
 
 
 const Wrapper = styled.div`
@@ -164,42 +160,21 @@ const Name = styled.h3`
     -webkit-box-orient: vertical;
 `;
 
-function getIds(page,photoData){
-    let ids = []
 
-    for (let i = page * 8; i < photoData.length; i++) {
-        ids.push(i);
-    }
-
-    if(ids.length > 8)
-        ids = ids.slice(0,8)
-
-    return ids
-}
-
-function isSearch(query){
-    if(query === '')
-        return false
-    else
-        return true
-}
 
 function renderSearch(query,photoData){
-    const searchTerm = query.split('?')[1].split('=')[1]
 
     let results = []
 
     results = photoData.filter(photo => {
-        return(photo.name.includes(searchTerm) || photo.category.includes(searchTerm))
+        return(photo.category.includes(query))
     });
 
     return results
     
 }
 
-function HomePage(props) {
-
-    const page = useSelector(state => state.page)
+function CategoriesPage(props) {
 
     const [photoData,setPhotoData] = useState([])
 
@@ -225,30 +200,19 @@ function HomePage(props) {
                 </Form>
             </SearchWrapper>
             <PhotosContainer>
-                {isSearch(props.location.search)?
-                renderSearch(props.location.search,photoData).map(photo => {return(
+                {renderSearch(props.match.params.id,photoData).map(photo => {return(
                     <PhotoContainer key={photo.id}>
                         <Link href={`/photos/${photo.id}`}>
                             <Photo src={`http://localhost:8080/${photo.id}.jpeg`} alt={photo.name} />
                         </Link>
                         <Name>{photo.name}</Name>
                     </PhotoContainer>
-                )})
-                :
-                getIds(page,photoData).map(id => {return(
-                    <PhotoContainer key={id}>
-                        <Link href={`/photos/${id}`}>
-                            <Photo src={`http://localhost:8080/${id}.jpeg`} alt={photoData[id].name} />
-                        </Link>
-                        <Name>{photoData[id].name}</Name>
-                    </PhotoContainer>
                 )})}
             </PhotosContainer>
         </Wrapper>
-        <PageSelect />
         </div>
     
     )
 }
 
-export default HomePage
+export default CategoriesPage

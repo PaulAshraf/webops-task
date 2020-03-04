@@ -76,12 +76,12 @@ function PageSelect() {
                 {getNumberOfPages(photoData).map(num => {
                     if(num === page){
                         return(
-                            <Item key={num}><ItemLink curr onClick={() => {console.log("1st"); dispatch(goto(num));}}>{num}</ItemLink></Item>
+                            <Item key={num}><ItemLink curr onClick={() => { dispatch(goto(num));}}>{num}</ItemLink></Item>
                         )
                     }
                     else{
                         return(
-                            <Item key={num}><ItemLink onClick={() => {console.log("2nd"); dispatch(goto(num));}}>{num}</ItemLink></Item>
+                            <Item key={num}><ItemLink onClick={() => { dispatch(goto(num));}}>{num}</ItemLink></Item>
                         )
                     }       
                 })}

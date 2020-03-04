@@ -9,6 +9,7 @@ import Header from './components/Header';
 import FooterBar from './components/FooterBar';
 import PhotoPage from './pages/PhotoPage'
 import HomePage from './pages/HomePage';
+import CategoriesPages from './pages/CategoriesPage';
 import styled from 'styled-components'
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
         <br /><br /><br /><br />
         <Switch>
           <Route path='/photos/:id' component={PhotoPage} />
+          <Route path='/category/:id' component={CategoriesPages} />
           <Route path='/' component={HomePage} />
         </Switch>
         <Footer />
