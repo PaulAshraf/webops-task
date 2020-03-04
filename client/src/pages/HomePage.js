@@ -38,6 +38,7 @@ const Buttons = styled.div`
 const ClearButton = styled.a`
     background-color: #fff;
     color: #000;
+    font: 13.3333px;
     border: solid 1px #000;
     padding-right: 10px;
     padding-left: 10px;
@@ -115,12 +116,11 @@ const Photo = styled.img`
     position: relative;
 
     height: 230px;
+    width: 250px;
 
     object-fit: contain;
     background-size: cover !important;
     background-position: center !important;
-
-    display: none;
 `;
 
 const Name = styled.h3`
@@ -139,16 +139,47 @@ const Name = styled.h3`
     -webkit-box-orient: vertical;
 `;
 
+function getIds(page,photoData){
+    let ids = []
 
+    for (let i = page * 8; i < photoData.length; i++) {
+        ids.push(i);
+    }
 
-function HomePage() {
+    if(ids.length > 8)
+        ids = ids.slice(0,8)
+
+    return ids
+}
+
+function isSearch(query){
+    if(query === null)
+        return false
+    else
+        return true
+}
+
+function renderSearch(query,photoData){
+    const searchTerm = query.split('?')[1].split('=')[1]
+
+    let results = []
+
+    results = photoData.filter(photo => {
+        return(photo.name.includes(searchTerm) || photo.category.includes(searchTerm))
+    });
+
+    return results
+    
+}
+
+function HomePage(props) {
 
     const dispatch = useDispatch()
     const page = useSelector(state => state.page)
 
     const [photoData,setPhotoData] = useState([])
 
-    useEffect(() => {
+    useEffect(() => { console.log(props.location.search)
         fetch(`http://localhost:8080/data.json`)
             .then(response => response.json())
             .then(data => setPhotoData(data.data))
@@ -158,18 +189,35 @@ function HomePage() {
     return (
         <Wrapper>
             <SearchWrapper>
-                <Form>
+                <Form action='/photos'>
                     <Buttons>
-                        <ClearButton />
-                        <ApplyButton />
+                        <ClearButton>Clear</ClearButton>
+                        <ApplyButton>Apply</ApplyButton>
                     </Buttons>
                     <SearchBarWrapper>
-                        <SearchBar />
+                        <SearchBar placeholder='Search' name='name' />
                     </SearchBarWrapper>
                 </Form>
             </SearchWrapper>
             <PhotosContainer>
-
+                {isSearch(props.location.search)?
+                renderSearch(props.location.search,photoData).map(photo => {return(
+                    <PhotoContainer key={photo.id}>
+                        <Link href={`/photos/${photo.id}`}>
+                            <Photo src={`http://localhost:8080/${photo.id}.jpeg`} alt={photo.name} />
+                        </Link>
+                        <Name>{photo.name}</Name>
+                    </PhotoContainer>
+                )})
+                :
+                getIds(page,photoData).map(id => {return(
+                    <PhotoContainer key={id}>
+                        <Link href={`/photos/${id}`}>
+                            <Photo src={`http://localhost:8080/${id}.jpeg`} alt={photoData[id].name} />
+                        </Link>
+                        <Name>{photoData[id].name}</Name>
+                    </PhotoContainer>
+                )})}
             </PhotosContainer>
         </Wrapper>
     
