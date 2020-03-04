@@ -53,6 +53,12 @@
 			"name":"1917",
 			"desc":"During World War I, two British soldiers -- Lance Cpl. Schofield and Lance Cpl. Blake -- receive seemingly impossible orders. In a race against time, they must cross over into enemy territory to deliver a message that could potentially save 1,600 of their fellow comrades -- including Blake's own brother.",
 			"category":"War"
+		},
+		{
+			"id":9,
+			"name":"Knives Out",
+			"desc":"When renowned crime novelist Harlan Thrombey dies just after his 85th birthday, the inquisitive and debonair Detective Benoit Blanc arrives at his estate to investigate. From Harlan's dysfunctional family to his devoted staff, Blanc sifts through a web of red herrings and self-serving lies to uncover the truth behind Thrombey's untimely demise.",
+			"category":"Thriller"
 		}
 		
 	]

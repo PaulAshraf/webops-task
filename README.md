@@ -10,6 +10,6 @@ This will be updated with every commit.
 | Header | :ballot_box_with_check: |
 | Single Page | :ballot_box_with_check: |
 | Home Page | :soon: |
-| Ar/En with Redux | :x: |
-| Search Bar | :x: |
-| Pagation with Redux | :x: |
+| Categories | :x: |
+| Search Bar | :soon: |
+| Pagation with Redux | :soon: |
